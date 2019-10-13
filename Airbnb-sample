@@ -1,0 +1,57 @@
+// This is taken form the project but here is a snippet code I wrote and proud
+
+ var data = {
+        allItems: {
+            exp: [],
+            inc: []
+        },
+        totals: {
+            exp: 0,
+            inc: 0
+        }
+    };
+
+    return {
+        addItem: function (type, des, val) {
+            var newItem, ID;
+
+            // Creates new ID
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
+
+            // For the app there are two value types Inc (+) or Exp (-) 
+            // Create new item based on 'inc' or 'exp' type
+            // Here is the If / Else statement that takes into account the type with the argument
+            // that is then pushed onto the data structures
+            
+            if (type === 'exp') {
+                newItem = new Expense(ID, des, val);
+            } else if (type === 'inc') {
+                newItem = new Income(ID, des, val);
+            }
+            // Push it into our data structure of allItems.
+            // It access the data object we created and is pushing values onto the empty array
+            data.allItems[type].push(newItem);
+
+            // Return the new element
+            return newItem;
+        },
+
+     
+        }
+    };
+
+
+})();
+
+
+// Some parts may not make sense in this snippet but just wanted to highlight that specific code. Please see the app.js file
+// for the full context.
+
+
+
+
+
